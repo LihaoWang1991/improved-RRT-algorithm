@@ -9,7 +9,7 @@ check.
 
 Here is a comparison of the original RRT algorithm and the improved one.
 
-# Original RRT (only static obstacles are considered):
+Original RRT (only static obstacles are considered):
 
 ![](https://github.com/LihaoWang1991/improved-RRT-algorithm/blob/master/image-and-video/image1.PNG)
 
