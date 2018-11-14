@@ -15,6 +15,6 @@ Original RRT (only static obstacles are considered):
 
 Improved RRT both static and moving obstacles are taken into account
 
-<video src="video1.webm" width="320" height="200" controls preload><https://github.com/LihaoWang1991/improved-RRT-algorithm/upload/master/image-and-video/video1.webm>
+<https://github.com/LihaoWang1991/improved-RRT-algorithm/upload/master/image-and-video/video1.webm>
 
 
