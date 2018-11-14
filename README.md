@@ -11,7 +11,7 @@ Here is a comparison of the original RRT algorithm and the improved one.
 
 Original RRT (only static obstacles are considered):
 
-![](https://github.com/LihaoWang1991/Java-GUI-earthquake-visualization-project/blob/master/Images/GUI-effect.PNG)
+![](https://github.com/LihaoWang1991/improved-RRT-algorithm/tree/master/image-and-video/image1.PNG)
 
 Improved RRT (both static and moving obstacles are taken into account)
 
