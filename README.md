@@ -14,9 +14,6 @@ Original RRT (only static obstacles are considered):
 
 
 Improved RRT both static and moving obstacles are taken into account
-
-<video width="320" height="200" controls preload> 
-    <source src="video1.webm"></https://github.com/LihaoWang1991/improved-RRT-algorithm/tree/master/image-and-video> 
-</video>
+[![Audi R8](http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://www.youtube.com/watch?v=KOxbO0EI4MA "Audi R8")
 
 
