@@ -13,7 +13,6 @@ Original RRT (only static obstacles are considered):
 
 
 
-Improved RRT both static and moving obstacles are taken into account
-[![Audi R8](http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://youtu.be/14vQHFji4-w)
+Improved RRT (both static and moving obstacles are taken into account)
 
 
