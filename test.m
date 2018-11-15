@@ -1,4 +1,5 @@
 %% pathRRT
+
 %%  - create a path from a start node to an end node
 %%    using the RRT algorithm.
 %%  - RRT = Rapidly-exploring Random Tree
@@ -267,11 +268,11 @@ function [new_tree,flag,new_nodeDepth] = extendTree(tree,end_node,segmentLength,
         (world.NEcorner(2)-world.SWcorner(2))*rand];
     % find leaf on node that is closest to randomPoint
     tmp = tree(:,1:2)-ones(size(tree,1),1)*randomPoint; % times ones is to make sure the same dimention, because tree maybe has n rows
-    [dist,idx] = min(sum(tmp.^2,2)); %diag在这里是取矩阵对角线元素输出列向量，tmp和其转置相乘对角线正好是两坐标相减的平方和，即为距离的平方，看离哪个点最近并指示出其位置idx
-    cost     = tree(idx,4) + segmentLength;%离哪个已知点近就加在哪个点上...
+    [dist,idx] = min(sum(tmp.^2,2)); %diag鍦ㄨ繖閲屾槸鍙栫煩闃靛瑙掔嚎鍏冪礌杈撳嚭鍒楀悜閲忥紝tmp鍜屽叾杞疆鐩镐箻瀵硅绾挎濂芥槸涓ゅ潗鏍囩浉鍑忕殑骞虫柟鍜岋紝鍗充负璺濈鐨勫钩鏂癸紝鐪嬬鍝釜鐐规渶杩戝苟鎸囩ず鍑哄叾浣嶇疆idx
+    cost     = tree(idx,4) + segmentLength;%绂诲摢涓凡鐭ョ偣杩戝氨鍔犲湪鍝釜鐐逛笂...
     new_point = (randomPoint-tree(idx,1:2));
     new_point = tree(idx,1:2)+new_point/norm(new_point)*segmentLength;
-    new_node = [new_point, 0, cost, idx];%离哪个已知点近就加在哪个点上，并记录路线idx
+    new_node = [new_point, 0, cost, idx];%绂诲摢涓凡鐭ョ偣杩戝氨鍔犲湪鍝釜鐐逛笂锛屽苟璁板綍璺嚎idx
     % collision check for both static and moving obstacles
     obstaclesLastStep=obstaclesAtStepK(world,nodeDepth(idx));
     obstaclesNowStep=obstaclesAtStepK(world,nodeDepth(idx)+1);
