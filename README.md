@@ -9,10 +9,10 @@ check.
 
 Here is a comparison of the original RRT algorithm and the improved one.
 
-Original RRT (only static obstacles are considered):
+**Original RRT (only static obstacles are considered):**
 
 ![](https://github.com/LihaoWang1991/improved-RRT-algorithm/blob/master/image-and-video/image1.PNG)
 
-Improved RRT (both static and moving obstacles are taken into account)
+**Improved RRT (both static and moving obstacles are considered, click image to see video):**
 
 [![Watch the video](https://github.com/LihaoWang1991/improved-RRT-algorithm/blob/master/image-and-video/youtube-video.PNG)](https://www.youtube.com/watch?v=14vQHFji4-w)
