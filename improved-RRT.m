@@ -1,9 +1,9 @@
-%% pathRRT
-%%  - create a path from a start node to an end node
-%%    using the RRT algorithm.
-%%  - RRT = Rapidly-exploring Random Tree
-%%  
-%% Based on code written by Yanjiang Zhao, improved by Lihao WANG
+% pathRRT
+%  - create a path from a start node to an end node
+%    using the RRT algorithm.
+%  - RRT = Rapidly-exploring Random Tree
+%  
+% Based on code written by Yanjiang Zhao, improved by Lihao WANG
 
 function pathRRT;
 
@@ -48,10 +48,10 @@ nodeDepth
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% createWorld
-%%  - create random world with obstacles
-%%  the first element is the north coordinate
-%%  the second element is the south coordinate
+% createWorld
+%  - create random world with obstacles
+%  the first element is the north coordinate
+%  the second element is the south coordinate
 function world = createWorld(NumObstacles, NEcorner, SWcorner, speedSize);
 
   % check to make sure that the region is nonempty
@@ -90,15 +90,15 @@ function world = createWorld(NumObstacles, NEcorner, SWcorner, speedSize);
   end
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% obstaclesAtStepK
-%% calculate the obstacles' positions at step k
+% obstaclesAtStepK
+% calculate the obstacles' positions at step k
 function [obstaclesK]=obstaclesAtStepK(world,k);  
 
 obstaclesK=[(world.cn)',(world.ce)']+world.speed*k;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% generateRandomNode
-%%   create a random node (initialize)
+% generateRandomNode
+%   create a random node (initialize)
 function node=generateRandomNode(world);
 
 % randomly pick configuration
@@ -118,8 +118,8 @@ while collision(node, node, world),
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% collision
-%%   check to see if a node is in collsion with obstacles
+% collision
+%   check to see if a node is in collsion with obstacles
 function collision_flag = collision(node, parent, world);
 
 collision_flag = 0;
@@ -143,8 +143,8 @@ else
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% dynaCollision
-%%   check to see if a node is in collsion with one certain moving obstacle
+% dynaCollision
+%   check to see if a node is in collsion with one certain moving obstacle
 function dynaCollision_flag = dynaCollision (node, parent, world, k, i);  % k is the step number and i is the moving obstacle index
 dynaCollision_flag = 0;
 Last_Obstacle=obstaclesAtStepK(world,k-1);
@@ -169,7 +169,7 @@ StartPoint1=[O11;O12;O22;O21];
 EndPoint1=[O12;O22;O21;O11];
 StartPoint2=[O31;O32;O42;O41];
 EndPoint2=[O32;O42;O41;O31];
-%% check the collision between the parent to node path and the sweeping rectangle at step k
+% check the collision between the parent to node path and the sweeping rectangle at step k
 for j=1:4,
     if ((max(parent(1),node(1))>min(StartPoint1(j,1),EndPoint1(j,1)))...
         &(min(parent(1),node(1))<max(StartPoint1(j,1),EndPoint1(j,1)))),    % in case that the parent to node path and each rectangle edge the has commun part in x axis
@@ -212,7 +212,7 @@ for j=1:4,
     end
 end      
     
-%% check the collision between the node point and the sweeping rectangle at step k+1
+% check the collision between the node point and the sweeping rectangle at step k+1
 cosTheta=world.speed(i,1)/norm(world.speed(i,:));                                 % rotate the coordinate system by angle Theta, Theta is the angle of the speed vector
 sinTheta=world.speed(i,2)/norm(world.speed(i,:));
 NewO31(1)=O31(1)*cosTheta+O31(2)*sinTheta;                                        % calculate the new coordinate of each points in new coordinate system
@@ -232,8 +232,8 @@ end
     
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% returnY
-%% given 2 endpoints a(x1,y1) and b(x2,y2) of a segment, return the y value at another point x on the segment
+% returnY
+% given 2 endpoints a(x1,y1) and b(x2,y2) of a segment, return the y value at another point x on the segment
 function y = returnY (a, b, x);
 if a(1)==b(1),   % check if the segment is in parallel with y axis
     disp('Not valid segment')
@@ -242,8 +242,8 @@ else
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% canEndConnectToTree
-%%   check to see if the end node can connect to the tree
+% canEndConnectToTree
+%   check to see if the end node can connect to the tree
 function flag = canEndConnectToTree(tree,end_node,minDist,world);
   flag = 0;
   % check only last node added to tree since others have been checked
@@ -253,9 +253,9 @@ function flag = canEndConnectToTree(tree,end_node,minDist,world);
   end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% extendTree
-%%   extend tree by randomly selecting point and growing tree toward that
-%%   point
+% extendTree
+%   extend tree by randomly selecting point and growing tree toward that
+%   point
 function [new_tree,flag,new_nodeDepth] = extendTree(tree,end_node,segmentLength,world,nodeDepth); %nodeDepth is the step number for each node for dynamic collicision check
 
   flag1 = 1;
@@ -267,11 +267,11 @@ function [new_tree,flag,new_nodeDepth] = extendTree(tree,end_node,segmentLength,
         (world.NEcorner(2)-world.SWcorner(2))*rand];
     % find leaf on node that is closest to randomPoint
     tmp = tree(:,1:2)-ones(size(tree,1),1)*randomPoint; % times ones is to make sure the same dimention, because tree maybe has n rows
-    [dist,idx] = min(sum(tmp.^2,2)); %diag在这里是取矩阵对角线元素输出列向量，tmp和其转置相乘对角线正好是两坐标相减的平方和，即为距离的平方，看离哪个点最近并指示出其位置idx
-    cost     = tree(idx,4) + segmentLength;%离哪个已知点近就加在哪个点上...
+    [dist,idx] = min(sum(tmp.^2,2)); %diag鍦ㄨ繖閲屾槸鍙栫煩闃靛瑙掔嚎鍏冪礌杈撳嚭鍒楀悜閲忥紝tmp鍜屽叾杞疆鐩镐箻瀵硅绾挎濂芥槸涓ゅ潗鏍囩浉鍑忕殑骞虫柟鍜岋紝鍗充负璺濈鐨勫钩鏂癸紝鐪嬬鍝釜鐐规渶杩戝苟鎸囩ず鍑哄叾浣嶇疆idx
+    cost     = tree(idx,4) + segmentLength;%绂诲摢涓凡鐭ョ偣杩戝氨鍔犲湪鍝釜鐐逛笂...
     new_point = (randomPoint-tree(idx,1:2));
     new_point = tree(idx,1:2)+new_point/norm(new_point)*segmentLength;
-    new_node = [new_point, 0, cost, idx];%离哪个已知点近就加在哪个点上，并记录路线idx
+    new_node = [new_point, 0, cost, idx];%绂诲摢涓凡鐭ョ偣杩戝氨鍔犲湪鍝釜鐐逛笂锛屽苟璁板綍璺嚎idx
     % collision check for both static and moving obstacles
     obstaclesLastStep=obstaclesAtStepK(world,nodeDepth(idx));
     obstaclesNowStep=obstaclesAtStepK(world,nodeDepth(idx)+1);
@@ -313,8 +313,8 @@ function [new_tree,flag,new_nodeDepth] = extendTree(tree,end_node,segmentLength,
   end
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% findMinimumPath
-%%   find the lowest cost path to the end node
+% findMinimumPath
+%   find the lowest cost path to the end node
 function path = findMinimumPath(tree,end_node);
     
     % find nodes that connect to end_node
@@ -337,8 +337,8 @@ function path = findMinimumPath(tree,end_node);
     end
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% plotWorld
-%%   plot obstacles and path
+% plotWorld
+%   plot obstacles and path
 function plotWorld(world,path,tree,pathDepth)
   % the first element is the north coordinate
   % the second element is the south coordinate
