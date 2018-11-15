@@ -15,4 +15,4 @@ Original RRT (only static obstacles are considered):
 
 Improved RRT (both static and moving obstacles are taken into account)
 
-[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
+[![Watch the video](https://github.com/LihaoWang1991/improved-RRT-algorithm/blob/master/image-and-video/youtube-video.PNG)](https://www.youtube.com/watch?v=14vQHFji4-w)
