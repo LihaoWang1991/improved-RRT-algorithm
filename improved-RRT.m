@@ -47,7 +47,7 @@ tree
 nodeDepth
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % createWorld
 %  - create random world with obstacles
 %  the first element is the north coordinate
@@ -117,7 +117,7 @@ while collision(node, node, world),
   node     = [pn, pe, chi, cost, 0];
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % collision
 %   check to see if a node is in collsion with obstacles
 function collision_flag = collision(node, parent, world);
@@ -142,7 +142,7 @@ else
     end
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % dynaCollision
 %   check to see if a node is in collsion with one certain moving obstacle
 function dynaCollision_flag = dynaCollision (node, parent, world, k, i);  % k is the step number and i is the moving obstacle index
@@ -231,7 +231,7 @@ end
     
     
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % returnY
 % given 2 endpoints a(x1,y1) and b(x2,y2) of a segment, return the y value at another point x on the segment
 function y = returnY (a, b, x);
@@ -241,7 +241,7 @@ else
     y=a(2)+(b(2)-a(2))/(b(1)-a(1))*(x-a(1));
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % canEndConnectToTree
 %   check to see if the end node can connect to the tree
 function flag = canEndConnectToTree(tree,end_node,minDist,world);
@@ -252,7 +252,7 @@ function flag = canEndConnectToTree(tree,end_node,minDist,world);
     flag = 1;
   end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % extendTree
 %   extend tree by randomly selecting point and growing tree toward that
 %   point
@@ -312,7 +312,7 @@ function [new_tree,flag,new_nodeDepth] = extendTree(tree,end_node,segmentLength,
     flag = 0;
   end
   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % findMinimumPath
 %   find the lowest cost path to the end node
 function path = findMinimumPath(tree,end_node);
@@ -336,7 +336,7 @@ function path = findMinimumPath(tree,end_node);
         parent_node = tree(parent_node,5); 
     end
     
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % plotWorld
 %   plot obstacles and path
 function plotWorld(world,path,tree,pathDepth)
