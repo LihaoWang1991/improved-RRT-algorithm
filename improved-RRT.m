@@ -89,14 +89,14 @@ function world = createWorld(NumObstacles, NEcorner, SWcorner, speedSize);
     world.speed
   end
  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % obstaclesAtStepK
 % calculate the obstacles' positions at step k
 function [obstaclesK]=obstaclesAtStepK(world,k);  
 
 obstaclesK=[(world.cn)',(world.ce)']+world.speed*k;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % generateRandomNode
 %   create a random node (initialize)
 function node=generateRandomNode(world);
@@ -150,12 +150,12 @@ dynaCollision_flag = 0;
 Last_Obstacle=obstaclesAtStepK(world,k-1);
 Current_Obstacle=obstaclesAtStepK(world,k);
 Next_Obstacle=obstaclesAtStepK(world,k+1);
-%% calculate the obstacle path start and end point coordinates at step k and k+1 taken obstacle radius into account
+% calculate the obstacle path start and end point coordinates at step k and k+1 taken obstacle radius into account
 O10=Last_Obstacle(i,1:2)-world.speed(i)/2*world.radius(i);
 O20=Current_Obstacle(i,1:2)+world.speed(i)/2*world.radius(i);
 O30=Current_Obstacle(i,1:2)-world.speed(i)/2*world.radius(i);
 O40=Next_Obstacle(i,1:2)+world.speed(i)/2*world.radius(i);
-%% calculate the 4 vertex coordinates of the sweeping rectangle at step k and k+1
+% calculate the 4 vertex coordinates of the sweeping rectangle at step k and k+1
 SpeedNormal=[world.speed(i,2),(-1)*world.speed(i,1)];
 O11=O10+SpeedNormal/2*world.radius(i);
 O21=O20+SpeedNormal/2*world.radius(i);
