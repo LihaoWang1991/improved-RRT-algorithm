@@ -1,6 +1,6 @@
-%% pathRRT
+% pathRRT
 
-%%  - create a path from a start node to an end node
+%  - create a path from a start node to an end node
 %%    using the RRT algorithm.
 %%  - RRT = Rapidly-exploring Random Tree
 %%  
